@@ -3,9 +3,11 @@ services:
   db:
     image: postgres
     volumes:
-      - ./data/postgresql:/var/lib/postgresql
+      - ./data:/var/lib/postgresql/data
     environment:
-      POSTGRES_DB: example
+      POSTGRES_DB: 'myapp'
+      POSTGRES_USER: 'myapp'
+      POSTGRES_PASSWORD: 'password'
   web:
     image: dockerfiles/django-uwsgi-nginx
     links:
