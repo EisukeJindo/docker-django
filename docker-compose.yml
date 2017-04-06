@@ -14,3 +14,4 @@ services:
       - "8080:80"
     volumes:
       - ./app:/home/docker/code/app
+    working_dir: /home/docker/code/app
