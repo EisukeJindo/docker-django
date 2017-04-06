@@ -1,0 +1,16 @@
+version: '2'
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/postgresql:/var/lib/postgresql
+    environment:
+      POSTGRES_DB: example
+  web:
+    image: dockerfiles/django-uwsgi-nginx
+    links:
+      - db
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/home/docker/code/app
